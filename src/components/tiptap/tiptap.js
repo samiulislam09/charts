@@ -23,7 +23,7 @@ export default function RichTextEditor({ content, onChange }) {
       }),
       Highlight,
     ],
-    content,
+    content: content,
     editorProps: {
       attributes: {
         class: "min-h-[156px] border rounded-md bg-slate-50 py-2 px-3",
@@ -31,14 +31,13 @@ export default function RichTextEditor({ content, onChange }) {
     },
     onUpdate: ({ editor }) => {
       if (onChange) {
-        // ✅ Prevents error if onChange is missing
         onChange(editor.getHTML());
       }
     },
   });
 
   return (
-    <div>
+    <div className="max-w-4xl mx-auto mt-4">
       {editor && <MenuBar editor={editor} />}
       <EditorContent editor={editor} />
     </div>
